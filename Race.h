@@ -105,7 +105,6 @@ class Race {
 						break;
 					}
 				}
-				cout << endl;
 
 				linestream.clear();
 			}
@@ -168,7 +167,6 @@ class Race {
 			}
 
 			helper.clear();
-			
 			return  avg_speed_;
 		}
 
