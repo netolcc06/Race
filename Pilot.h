@@ -15,8 +15,7 @@ class Pilot {
 			this->avg_speed = 0.0f;
 		}
 		void Update(int laps_completed_, float lap_time_, float avg_speed_) {
-			//23:49:08.277 038 – F.MASSA 1 1:02.852 44, 275
-			//int laps_completed_, float lap_time_, float avg_speed_
+			// The race contains only 4 laps.
 			if(laps_completed_<=4){
 				this->laps_completed = laps_completed_;
 				this->time += lap_time_;
