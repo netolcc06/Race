@@ -1,6 +1,12 @@
-A solução para o problema de corrida de Kart foi codificada em C++, 
-utilizando a IDE Visual Studio, no Windows.
+The solution for the Kart problem was developed in C++ on Windows with
+the Visual Studio IDE.
 
-O programa possui dois parâmetros de entrada: 
-<1> Caminho para o arquivo de entrada contendo os dados da corrida
-<2> Nome do arquivo de saída a conter as informações processadas
+The program has two command line arguments:
+
+<input> Path to the input file containing the race data
+<output> Name of the output file containing the processed information
+
+Example:
+
+Windows environment: race.exe race.txt results.txt
+Linux environment: ./race race.txt results.txt
