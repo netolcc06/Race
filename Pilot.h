@@ -19,8 +19,7 @@ class Pilot {
 			if(laps_completed_<=4){
 				this->laps_completed = laps_completed_;
 				this->time += lap_time_;
-				// Still need Proof check
-				this->avg_speed = (avg_speed_ + this->avg_speed) / 2; 
+				this->avg_speed = (laps_completed == 1) ? avg_speed_ : (avg_speed_ + this->avg_speed) / 2;
 				
 				if (laps_completed_ == 1)
 					this->best_lap = lap_time_;

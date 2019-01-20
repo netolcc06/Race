@@ -10,6 +10,7 @@
 #include "Utils.h"
 #include "Pilot.h"
 #include "Race.h"
+#include "TestPilot.h"
 
 using namespace std;
 
@@ -22,5 +23,9 @@ int main(int argc, char* argv[]) {
 	race.run(path);
 	race.toFile(out_path);
 
+	TestPilot testPilot;
+	testPilot.runTests();
+
+	system("pause");
 	return 0;
 }
