@@ -7,6 +7,14 @@
 
 using namespace std;
 
+
+/** Class race has many pilots
+  * Pilot has (string)id, (float)time, (int)laps_comleted, (float)avg_speed
+  * Parses the input, gets the id, updates the data
+  * If the pilot doesn't exist, a new pilot is inserted in vector<Pilot> pilots
+  * In the end, vector<Pilot> pilots is sorted according to the final time of the whole
+  * race for each pilot
+  **/
 class Race {
 	public:
 		
@@ -31,14 +39,6 @@ class Race {
 				float time_ = 0.0f, avg_speed_ = 0.0f;
 
 				while (!ss.eof()) {
-					
-					/** Class race has many pilots
-					 * Pilot has (string)id, (float)time, (int)laps_comleted, (float)avg_speed
-					 * Parses the input, gets the id, updates the data
-					 * If the pilot doesn't exist, a new pilot is inserted in vector<Pilot> pilots
-					 * In the end, vector<Pilot> pilots is sorted according to the final time of the whole 
-					 * race for each pilot
-					 **/
 					
 					// String stream outputs the operation to be performed
 					ss >> op;
@@ -86,16 +86,13 @@ class Race {
 					}
 					case AVG_SPEED:
 					{
-
 						avg_speed_ = parseAvgSpeed(op);
 
 						int pos = this->pilotExists(id_);
-						if (pos == -1) {
+						if (pos == -1)
 							this->insertPilot(id_, name_, laps_completed_, time_, avg_speed_);
-						}
-						else {
+						else
 							this->update(pos, laps_completed_, time_, avg_speed_);
-						}
 
 						it = TIME;
 						break;
@@ -109,6 +106,7 @@ class Race {
 			}
 
 			in_file.close();
+			// The race ends and it calculates the final positions for the pilots
 			this->endOfLine();
 		}
 
@@ -171,7 +169,7 @@ class Race {
 
 		void insertPilot(string id_, string name_, int laps_completed_, float lap_time_, float avg_speed_) {
 			Pilot newPilot(id_, name_);
-			//Pilot is inserted with the name and id obtnained in his first lap.
+			//Pilot is inserted with the name and id obtained in his first lap.
 			newPilot.Update(laps_completed_, lap_time_, avg_speed_);
 			pilots.push_back(newPilot);
 		}
