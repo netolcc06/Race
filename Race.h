@@ -105,7 +105,6 @@ class Race {
 						break;
 					}
 				}
-
 				linestream.clear();
 			}
 
@@ -160,7 +159,7 @@ class Race {
 					helper += op[i];
 					if (i == op.size() - 1) {
 						decimal_ = stoi(helper);
-						avg_speed_ = (float)integer_ + (float)decimal_ / (float)(float)(pow(10, helper.size()));
+						avg_speed_ = (float)integer_ + (float)decimal_ / (float)(pow(10, helper.size()));
 						helper.clear();
 					}
 				}
@@ -205,9 +204,10 @@ class Race {
 		}
 
 		void toFile(string path) {
-			std::ofstream file_out;
+			ofstream file_out;
 			file_out.open(path);
 			int finalPos = 1;
+			float winnerTime = pilots[0].getTotalTime();
 			
 			for (Pilot p : pilots) {
 				/** Displays the total amount of time each pilot needed to complete the race.
@@ -215,22 +215,51 @@ class Race {
 				  * strings in the format: xx:yy:zz.mm, where: 
 				  * xx := hours, yy := minutes, zz := seconds, mm := miliseconds
 				  */
-				int integerTime = (int)(p.getTotalTime()), helper = 0;
-				int hours = 0, minutes = 0, seconds = 0, miliseconds = (p.getTotalTime()-integerTime)*1000;
-
-				hours = integerTime / 3600;
-				helper = integerTime % 3600;
-				minutes = helper / 60;
-				seconds = helper % 60;
+				string stringTotalTime = floatTimeToString(p.getTotalTime());
 				
 				file_out << finalPos << "\t" << p.getId() << "\t" << p.getName()<< " " << "\t" << p.getLapsCompleted()
-					<< "\t" << hours <<":"<< minutes<<":"<< seconds<<"."<<miliseconds << endl;
+					<< "\t" << stringTotalTime << "\t" << "+(" << floatTimeToString(p.getTotalTime()-winnerTime) 
+					<< ")" << endl;
 				
 				finalPos++;
 			}
 
 			file_out.close();
 
+		}
+
+
+		/** 
+		  * Transforms float time into a composition of strings in the format: xx:yy:zz.mm, where:
+		  * xx := hours, yy := minutes, zz := seconds, mm := miliseconds
+		  */
+		string floatTimeToString(float time_) {
+			int integerTime = (int)time_, helper = 0;
+			int hours = 0, minutes = 0, seconds = 0, miliseconds = (time_ - integerTime) * 1000;
+			string elapsedTime = "";
+
+			hours = integerTime / 3600;
+			helper = integerTime % 3600;
+			minutes = helper / 60;
+			seconds = helper % 60;
+
+			elapsedTime += to_string(hours); 
+			elapsedTime += ":"; 
+			elapsedTime += to_string(minutes);
+			elapsedTime += ":"; 
+			if (seconds < 10)
+				elapsedTime += "0";
+			elapsedTime += to_string(seconds); 
+			elapsedTime += "."; 
+			if (miliseconds < 100){
+				if(miliseconds < 10)
+					elapsedTime += "00";
+				else
+					elapsedTime += "0";
+			}
+			elapsedTime += to_string(miliseconds);
+
+			return elapsedTime;
 		}
 
 	private:

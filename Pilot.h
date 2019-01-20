@@ -21,6 +21,11 @@ class Pilot {
 				this->time += lap_time_;
 				// Still need Proof check
 				this->avg_speed = (avg_speed_ + this->avg_speed) / 2; 
+				
+				if (laps_completed_ == 1)
+					this->best_lap = lap_time_;
+				else
+					this->best_lap = (lap_time_ < this->best_lap) ? lap_time_ : this->best_lap;
 			}
 
 		}
@@ -34,11 +39,12 @@ class Pilot {
 		int getLapsCompleted() { return this->laps_completed; }
 		float getTotalTime() { return this->time; }
 		float getAvgSpeed() { return this->avg_speed; }
+		float getBestLap() { return this->best_lap; }
 
 	private:	
 		int laps_completed;
 		string id, name;
-		float time, avg_speed;
+		float time, avg_speed, best_lap;
 
 };
 

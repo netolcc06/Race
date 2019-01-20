@@ -15,8 +15,8 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 
-	string path("C:\\Users\\netolcc06\\Documents\\Visual Studio 2015\\Projects\\Race\\race.txt");
-	string out_path("raceOut.txt");
+	string path(argv[1]);
+	string out_path(argv[2]);
 
 	Race race;	
 	race.run(path);
