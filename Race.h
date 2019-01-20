@@ -8,12 +8,12 @@
 using namespace std;
 
 
-/** Class race has many pilots
-  * Pilot has (string)id, (float)time, (int)laps_comleted, (float)avg_speed
-  * Parses the input, gets the id, updates the data
-  * If the pilot doesn't exist, a new pilot is inserted in vector<Pilot> pilots
+/** A race has many pilots.
+  * Each pilot contains (string)id, (float)time, (int)laps_comleted, (float)avg_speed.
+  * The function Race::run() parses the input and updates the pilots data.
+  * If the pilot doesn't exist, a new pilot is inserted in vector<Pilot> pilots.
   * In the end, vector<Pilot> pilots is sorted according to the final time of the whole
-  * race for each pilot
+  * race for each pilot in order to present the results of the race.
   **/
 class Race {
 	public:
@@ -29,8 +29,10 @@ class Race {
 			//Skip the first line
 			getline(in_file, line);
 
+			// Each line is used to update the data of the current pilot (identified by the id).
 			while (getline(in_file, line))
 			{
+				// String stream to hold the whole content of a line
 				istringstream ss(line);
 				PARSER it = TIME;
 
@@ -38,12 +40,13 @@ class Race {
 				string id_, name_;
 				float time_ = 0.0f, avg_speed_ = 0.0f;
 
+				// Each line (istringstream ss) is parsed
 				while (!ss.eof()) {
 					
-					// String stream outputs the operation to be performed
+					// String stream outputs the operation to be performed / data to be saved
 					ss >> op;
 
-					//it is used as an interator for each part of the line to be parsed
+					// it is used as an interator for each part of the line to be parsed
 					switch (it) {
 					case TIME:
 					{

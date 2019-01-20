@@ -1,0 +1,6 @@
+A solução para o problema de corrida de Kart foi codificada em C++, 
+utilizando a IDE Visual Studio, no Windows.
+
+O programa possui dois parâmetros de entrada: 
+<1> Caminho para o arquivo de entrada contendo os dados da corrida
+<2> Nome do arquivo de saída a conter as informações processadas
