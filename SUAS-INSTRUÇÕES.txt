@@ -1,4 +1,5 @@
-The solution for the Kart problem was developed in C++ on Windows with the Visual Studio IDE.
+The solution for the Kart problem was developed in C++ on Windows with
+the Visual Studio IDE.
 
 The program has two command line arguments:
 

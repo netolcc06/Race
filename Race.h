@@ -246,6 +246,8 @@ class Race {
 
 			elapsedTime += to_string(hours); 
 			elapsedTime += ":"; 
+			if (minutes < 10)
+				elapsedTime += "0";
 			elapsedTime += to_string(minutes);
 			elapsedTime += ":"; 
 			if (seconds < 10)

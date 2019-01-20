@@ -11,6 +11,7 @@
 #include "Pilot.h"
 #include "Race.h"
 #include "TestPilot.h"
+#include "TestRace.h"
 
 using namespace std;
 
@@ -26,6 +27,8 @@ int main(int argc, char* argv[]) {
 	TestPilot testPilot;
 	testPilot.runTests();
 
-	system("pause");
+	TestRace testRace;
+	testRace.runTests();
+
 	return 0;
 }

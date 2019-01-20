@@ -84,10 +84,6 @@ public:
 		pilotB.Update(1, 0.8f, 3.0f);
 		assert(pilotB<pilotA);
 	}
-	/*
-	bool operator<(Pilot rhs)const {
-		return this->time < rhs.getTotalTime();
-	}*/
 
 private:
 
